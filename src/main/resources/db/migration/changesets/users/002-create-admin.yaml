@@ -1,0 +1,18 @@
+databaseChangeLog:
+  - changeSet:
+      id: 002-create-admin
+      author: serverus
+      changes:
+        - insert:
+            tableName: users
+            columns:
+              - column:
+                  name: username
+                  value: "admin"
+              - column:
+                  name: encrypted_password
+                  # admin
+                  value: "$2a$12$SeBXYDBXfn4Jeszt9k.fy.RXWoTAlHDw.oOMjDssZEOby0fSAEH4O"
+              - column:
+                  name: role
+                  value: "ADMIN"

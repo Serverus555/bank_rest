@@ -1,0 +1,16 @@
+databaseChangeLog:
+  - changeSet:
+      id: 002-cascade-delete-with-user
+      author: serverus
+      changes:
+        - dropForeignKeyConstraint:
+            baseTableName: cards
+            constraintName: fk_cards_owner_id_users
+
+        - addForeignKeyConstraint:
+            baseTableName: cards
+            baseColumnNames: owner_id
+            constraintName: fk_cards_owner_id_users
+            referencedTableName: users
+            referencedColumnNames: id
+            onDelete: CASCADE

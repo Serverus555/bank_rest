@@ -1,0 +1,54 @@
+databaseChangeLog:
+  - changeSet:
+      id: 001-create-table-cards
+      author: serverus
+      changes:
+        - createTable:
+            tableName: cards
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: pk_cards
+                    nullable: false
+              - column:
+                  name: encrypted_number
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: last4_digits
+                  type: VARCHAR(4)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: owner_id
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_cards_owner_id_users
+                    referencedTableName: users
+                    referencedColumnNames: id
+              - column:
+                  name: owner_text
+                  type: VARCHAR(128)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: expiration
+                  type: DATE
+                  constraints:
+                    nullable: false
+              - column:
+                  name: status
+                  type: VARCHAR(20)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: balance
+                  type: NUMERIC(12,2)
+                  constraints:
+                    nullable: false

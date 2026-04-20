@@ -1,0 +1,16 @@
+databaseChangeLog:
+  - changeSet:
+      id: 002-cascade-delete-with-card
+      author: serverus
+      changes:
+        - dropForeignKeyConstraint:
+            baseTableName: block_card_requests
+            constraintName: fk_block_card_requests_card_id_cards
+
+        - addForeignKeyConstraint:
+            baseTableName: block_card_requests
+            baseColumnNames: card_id
+            constraintName: fk_block_card_requests_card_id_cards
+            referencedTableName: cards
+            referencedColumnNames: id
+            onDelete: CASCADE
